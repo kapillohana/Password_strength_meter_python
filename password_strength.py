@@ -55,19 +55,20 @@ def check_password_strength(password):
 st.title("Password Strength Checker")
 
 # Password suggestion section
-if st.button("Generate Strong Password"):
+if st.button("Generate Strong Password", key= "generate btn"):
     suggested_pwd = generate_strong_password()
     st.session_state.suggested_password = suggested_pwd
 
 if 'suggested_password' in st.session_state:
     st.code(st.session_state.suggested_password)
-    if st.button("Use This Password"):
+    if st.button("Use This Password", key= "use btn"):
         st.session_state.password = st.session_state.suggested_password
 
 # Password input
 password = st.text_input("Enter your password:", 
                         type="password",
-                        value=st.session_state.get('password', ''))
+                        value=st.session_state.get('password', ''),
+                        key= "pswd input")
 
 # Check strength button
 if st.button("Check Strength") and password:
