@@ -25,7 +25,7 @@ def check_password_strength(password):
     else:
         st.warning("❌ Password should be at least 8 characters long")
 
-    # Cheking for uppercase and lowercase
+      # Cheking for uppercase and lowercase
     if re.search(r"[A-Z]", password) and re.search(r"[a-z]", password):
         score += 1
     else:
@@ -37,7 +37,7 @@ def check_password_strength(password):
     else:
         st.warning("Add at least one number (0-9)")
 
-    # Checks for special Character
+    # Checking for special Character
     if re.search(r"[!@#$%^&*]", password):
         score += 1
     else:
@@ -51,7 +51,6 @@ def check_password_strength(password):
     else:
         st.error("❌ Weak Password - improve it using suggestions")
 
-# Streamlit UI
 st.title("Password Strength Checker")
 
 # Password suggestion section
@@ -64,13 +63,13 @@ if 'suggested_password' in st.session_state:
     if st.button("Use This Password", key= "use btn"):
         st.session_state.password = st.session_state.suggested_password
 
-# Password input
+# Asing user to Enter pasword
 password = st.text_input("Enter your password:", 
                         type="password",
                         value=st.session_state.get('password', ''),
                         key= "pswd input")
 
-# Check strength button with unique key
+# Checking strength of pswrd
 if st.button("Check Strength", key="check_strength_btn"):
     if password:
         check_password_strength(password)
