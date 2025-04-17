@@ -70,9 +70,10 @@ password = st.text_input("Enter your password:",
                         value=st.session_state.get('password', ''),
                         key= "pswd input")
 
-# Check strength button
-if st.button("Check Strength") and password:
-    check_password_strength(password)
-elif st.button("Check Strength") and not password:
-    st.warning("Please enter a password first")
+# Check strength button with unique key
+if st.button("Check Strength", key="check_strength_btn"):
+    if password:
+        check_password_strength(password)
+    else:
+        st.warning("Please enter a password first")
 
